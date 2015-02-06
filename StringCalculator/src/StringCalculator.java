@@ -1,4 +1,3 @@
-import com.sun.xml.internal.ws.util.StringUtils;
 
 public class StringCalculator {
 
@@ -7,7 +6,7 @@ public class StringCalculator {
 	private static final String DELIMITER_SPLITTER = "\n";
 
 	public int add(String inputText) throws Exception {
-		InputText input = new InputText(inputText);
+		//InputText input = new InputText(inputText);
 				
 		int sum = 0;
 
@@ -44,15 +43,15 @@ public class StringCalculator {
 		return;
 	}
 
-	private int add(InputText input) {
-		int[] numbers= input.getLisdtOfNumbers();
-		
-	}
+//	private int add(InputText input) {
+//		int[] numbers= input.getLisdtOfNumbers();
+//		
+//	}
 	
 	private int[] parseNumbers(String inputText) {
-		String lineWithDelimiter = extractDelimiter(inputText);
-		String delimiter = parseDelimiter(inputText);
-	    String textNumbers = extractNumbers(inputText);
+//		String lineWithDelimiter = extractDelimiter(inputText);
+//		String delimiter = parseDelimiter(inputText);
+//	    String textNumbers = extractNumbers(inputText);
 	    
 		
 		String stringDelimiter = "[,\n]";
@@ -66,8 +65,6 @@ public class StringCalculator {
 		return numbersAsInts;
 	}
 	
-	public S
-
 	private int[] convertTextToNumbers(String numbers, String stringDelimiter) {
 		String[] split = numbers.split(stringDelimiter);
 		int[] numberAsInts = new int[split.length];
