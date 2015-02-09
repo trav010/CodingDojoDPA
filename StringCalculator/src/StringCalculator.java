@@ -1,46 +1,42 @@
-
 public class StringCalculator {
 
-	public int add(String inputText) throws Exception {
-		CalculatorInput arguments = new CalculatorInput(inputText);
+	public int add(String inputText) {
+		int[] arguments = (new CalculatorInput(inputText)).getCalculatorArguments();
 		return add(arguments);
 	}
-	
-	private int add(CalculatorInput input) {
-		int sum = 0;
 
-		int[] arguments = input.getCalculatorArguments();
-		if (arguments == null || arguments.length == 0)
-		{
+	private int add(int[] arguments) {
+		int sum = 0;
+		if (arguments == null || arguments.length == 0) {
 			return sum;
 		}
 
-		checkForNegativeNumbers(arguments);
-
-		for (int element : arguments) {
-
-			sum += element;
+		ensureNumbersAreNotNegative(arguments);
+		
+		for (int number : arguments) {
+			sum += number;
 		}
 		return sum;
 	}
 
-	private void checkForNegativeNumbers(int[] numbers) {
-		String negativeNumbers = null;
-		for (int element : numbers) {
-			if (element < 0) {
-				if (negativeNumbers == null) {
-					negativeNumbers = Integer.toString(element);
-					continue;
+	private void ensureNumbersAreNotNegative(int[] numbers) {
+		String negativeNumbersList = null;
+		for (int number : numbers) {
+			if (number < 0) {
+				if (negativeNumbersList == null) {
+					negativeNumbersList = Integer.toString(number);
 				}
-				negativeNumbers += "," + element;
+				else {
+					negativeNumbersList += ", " + number;
+				}
 			}
 		}
-		if (negativeNumbers != null) {
+		
+		if (negativeNumbersList != null) {
 			throw new IllegalArgumentException(
-					"Negative Zahlen sind nicht erlaubt. Folgende wurden gefunden: "
-							+ negativeNumbers);
+					"Negative Zahlen sind nicht erlaubt. " +
+					"Folgende wurden gefunden: " + negativeNumbersList);
 		}
-		return;
 	}
-	
+
 }
