@@ -87,6 +87,16 @@ public class StringCalculatorTest {
 					"Negative Zahlen sind nicht erlaubt. Folgende wurden gefunden: -3",
 					e.getMessage());
 		}
+		
+		input = "//:\n-1:8:-3:7";
+		try {
+			calculator.add(input);
+			fail();
+		} catch (Exception e) {
+			assertEquals(
+					"Negative Zahlen sind nicht erlaubt. Folgende wurden gefunden: -1, -3",
+					e.getMessage());
+		}
 	}
-
+	
 }
