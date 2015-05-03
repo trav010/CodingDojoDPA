@@ -3,15 +3,13 @@
  */
 package de.dpa.codingdojo.domain;
 
-import java.beans.PropertyChangeListener;
-
-import de.dpa.codingdojo.observer.Observable;
+import de.dpa.codingdojo.observer.AbstractObservable;
 
 
 /**
  * @author Dietrich Travkin
  */
-public class Person implements Observable {
+public class Person extends AbstractObservable {
 
 	private String vorname, nachname;
 	private Anschrift anschrift;
@@ -30,7 +28,9 @@ public class Person implements Observable {
 	}
 
 	public void setVorname(String vorname) {
+		String previousValue = this.vorname;
 		this.vorname = vorname;
+		this.getPropertyChangeSupport().firePropertyChange(PROPERTY_VORNAME, previousValue, this.vorname);
 	}
 
 	public String getNachname() {
@@ -38,7 +38,9 @@ public class Person implements Observable {
 	}
 
 	public void setNachname(String nachname) {
+		String previousValue = this.nachname;
 		this.nachname = nachname;
+		this.getPropertyChangeSupport().firePropertyChange(PROPERTY_NACHNAME, previousValue, this.nachname);
 	}
 	
 	public Anschrift getAnschrift() {
@@ -46,33 +48,9 @@ public class Person implements Observable {
 	}
 
 	public void setAnschrift(Anschrift anschrift) {
+		Anschrift previousValue = this.anschrift;
 		this.anschrift = anschrift;
-	}
-
-	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		// TODO implement this method
-		
-	}
-
-	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener,
-			String propertyname) {
-		// TODO implement this method
-		
-	}
-
-	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
-		// TODO implement this method
-		
-	}
-
-	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener,
-			String propertyname) {
-		// TODO implement this method
-		
+		this.getPropertyChangeSupport().firePropertyChange(PROPERTY_ANSCHRIFT, previousValue, this.anschrift);
 	}
 
 }
