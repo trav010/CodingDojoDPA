@@ -23,6 +23,9 @@ public class Person extends AbstractObservable {
 		this.nachname = nachname;
 	}
 	
+	public Person() {
+	}
+	
 	public String getVorname() {
 		return vorname;
 	}

@@ -4,5 +4,8 @@
 	<classpathentry kind="src" path="tests"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="libs/mockito-core-1.10.19.jar"/>
+	<classpathentry kind="lib" path="libs/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="lib" path="libs/objenesis-2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

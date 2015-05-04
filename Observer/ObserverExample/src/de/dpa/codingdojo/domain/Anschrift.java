@@ -24,6 +24,9 @@ public class Anschrift extends AbstractObservable {
 		this.plz = plz;
 		this.ort = ort;
 	}
+	
+	public Anschrift() {
+	}
 
 	public String getStrasse() {
 		return strasse;
