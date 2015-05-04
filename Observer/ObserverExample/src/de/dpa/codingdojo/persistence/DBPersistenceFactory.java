@@ -3,22 +3,27 @@
  */
 package de.dpa.codingdojo.persistence;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import de.dpa.codingdojo.domain.Anschrift;
 import de.dpa.codingdojo.domain.Person;
 
 /**
  * @author Dietrich Travkin
  */
-public class DBPersistenceFactory {
-	
-	// TODO ensure that any change on the created objects leads to saving the modified object
+public class DBPersistenceFactory implements PropertyChangeListener {
 	
 	public Person createPerson() {
-		return new Person();
+		Person person = new Person();
+		person.addPropertyChangeListener(this);
+		return person;
 	}
 	
 	public Anschrift createAnschrift() {
-		return new Anschrift();
+		Anschrift anschrift = new Anschrift();
+		anschrift.addPropertyChangeListener(this);
+		return anschrift;
 	}
 	
 	protected void safeElement(Person person) {
@@ -29,4 +34,12 @@ public class DBPersistenceFactory {
 		System.out.println("Anschrift (\"" + anschrift.toString() + "\") gespeichert.");
 	}
 
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		if (evt.getSource() instanceof Person) {
+			safeElement((Person) evt.getSource());
+		} else if (evt.getSource() instanceof Anschrift) {
+			safeElement((Anschrift) evt.getSource());
+		}
+	}
 }
