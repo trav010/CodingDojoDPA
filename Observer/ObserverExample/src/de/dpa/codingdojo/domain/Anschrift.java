@@ -3,13 +3,15 @@
  */
 package de.dpa.codingdojo.domain;
 
-import de.dpa.codingdojo.observer.AbstractObservable;
+import java.beans.PropertyChangeListener;
+
+import de.dpa.codingdojo.observer.Observable;
 
 
 /**
  * @author Dietrich Travkin
  */
-public class Anschrift extends AbstractObservable {
+public class Anschrift implements Observable {
 
 	private String strasse, hausnummer, plz, ort;
 	
@@ -33,9 +35,7 @@ public class Anschrift extends AbstractObservable {
 	}
 	
 	public void setStrasse(String strasse) {
-		String previousValue = this.strasse;
 		this.strasse = strasse;
-		this.getPropertyChangeSupport().firePropertyChange(PROPERTY_STRASSE, previousValue, this.strasse);
 	}
 	
 	public String getHausnummer() {
@@ -43,9 +43,7 @@ public class Anschrift extends AbstractObservable {
 	}
 	
 	public void setHausnummer(String hausnummer) {
-		String previousValue = this.hausnummer;
 		this.hausnummer = hausnummer;
-		this.getPropertyChangeSupport().firePropertyChange(PROPERTY_HAUSNR, previousValue, this.hausnummer);
 	}
 	
 	public String getPlz() {
@@ -53,9 +51,7 @@ public class Anschrift extends AbstractObservable {
 	}
 	
 	public void setPlz(String plz) {
-		String previousValue = this.plz;
 		this.plz = plz;
-		this.getPropertyChangeSupport().firePropertyChange(PROPERTY_PLZ, previousValue, this.plz);
 	}
 	
 	public String getOrt() {
@@ -63,9 +59,33 @@ public class Anschrift extends AbstractObservable {
 	}
 	
 	public void setOrt(String ort) {
-		String previousValue = this.ort;
 		this.ort = ort;
-		this.getPropertyChangeSupport().firePropertyChange(PROPERTY_ORT, previousValue, this.ort);
+	}
+
+	@Override
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		// TODO implement this method
+		
+	}
+
+	@Override
+	public void addPropertyChangeListener(PropertyChangeListener listener,
+			String propertyname) {
+		// TODO implement this method
+		
+	}
+
+	@Override
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		// TODO implement this method
+		
+	}
+
+	@Override
+	public void removePropertyChangeListener(PropertyChangeListener listener,
+			String propertyname) {
+		// TODO implement this method
+		
 	}
 
 }
