@@ -26,20 +26,20 @@ public class DBPersistenceFactory implements PropertyChangeListener {
 		return anschrift;
 	}
 	
-	protected void safeElement(Person person) {
+	protected void saveElement(Person person) {
 		System.out.println("Person (\"" + person.toString() + "\") gespeichert.");
 	}
 	
-	protected void safeElement(Anschrift anschrift) {
+	protected void saveElement(Anschrift anschrift) {
 		System.out.println("Anschrift (\"" + anschrift.toString() + "\") gespeichert.");
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getSource() instanceof Person) {
-			safeElement((Person) evt.getSource());
+			saveElement((Person) evt.getSource());
 		} else if (evt.getSource() instanceof Anschrift) {
-			safeElement((Anschrift) evt.getSource());
+			saveElement((Anschrift) evt.getSource());
 		}
 	}
 }
