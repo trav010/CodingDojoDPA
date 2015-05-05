@@ -39,23 +39,23 @@ public class DBPersistenceFactoryTest {
 		person.setNachname("Mustermann");
 		
 		// then
-		verify(factory, times(2)).safeElement(person);
+		verify(factory, times(2)).saveElement(person);
 
 		
 		// when
 		anschrift.setStrasse("Am Anger");
 		anschrift.setHausnummer("33 a");
 		anschrift.setPlz("33333");
-		anschrift.setOrt("Gütersloh");
+		anschrift.setOrt("Gï¿½tersloh");
 		
 		// then
-		verify(factory, times(4)).safeElement(anschrift);
+		verify(factory, times(4)).saveElement(anschrift);
 		
 		
 		// when
 		person.setAnschrift(anschrift);
 		
 		// then
-		verify(factory, times(3)).safeElement(person);
+		verify(factory, times(3)).saveElement(person);
 	}
 }

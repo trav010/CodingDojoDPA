@@ -21,11 +21,11 @@ public class DBPersistenceFactory {
 		return new Anschrift();
 	}
 	
-	protected void safeElement(Person person) {
+	protected void saveElement(Person person) {
 		System.out.println("Person (\"" + person.toString() + "\") gespeichert.");
 	}
 	
-	protected void safeElement(Anschrift anschrift) {
+	protected void saveElement(Anschrift anschrift) {
 		System.out.println("Anschrift (\"" + anschrift.toString() + "\") gespeichert.");
 	}
 
